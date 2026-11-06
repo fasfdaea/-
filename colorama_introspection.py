@@ -30,6 +30,10 @@ def show_function_signatures():
 
 
 def main():
+    print("Если Colorama ещё не установлена, выполните команду:")
+    print("python3 -m pip install colorama")
+    print("Эта команда установит библиотеку для цветного текста в терминале.\n")
+
     # None оставляет автоматический выбор convert/strip на усмотрение Colorama.
     colorama.init(autoreset=True, convert=None, strip=None, wrap=True)
     try:
