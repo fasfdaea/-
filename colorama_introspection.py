@@ -2,6 +2,9 @@
 """Настройка Colorama и краткая интроспекция её публичного API."""
 
 import inspect
+import os
+import shlex
+import sys
 
 try:
     import colorama
@@ -10,9 +13,12 @@ except ModuleNotFoundError as error:
     if error.name != "colorama":
         raise
     print("Не найдена библиотека Colorama.")
-    print("В VS Code откройте меню Terminal -> New Terminal.")
-    print("В появившемся терминале выполните команду:")
-    print("python3 -m pip install colorama")
+    print("В терминале выполните команду установки для этого Python:")
+    if os.name == "nt":
+        quoted_python = "'" + sys.executable.replace("'", "''") + "'"
+        print(f"& {quoted_python} -m pip install colorama")
+    else:
+        print(f"{shlex.quote(sys.executable)} -m pip install colorama")
     print("После установки запустите программу ещё раз.")
     raise SystemExit(1)
 
