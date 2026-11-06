@@ -3,8 +3,18 @@
 
 import inspect
 
-import colorama
-from colorama import Back, Cursor, Fore, Style
+try:
+    import colorama
+    from colorama import Back, Cursor, Fore, Style
+except ModuleNotFoundError as error:
+    if error.name != "colorama":
+        raise
+    print("Не найдена библиотека Colorama.")
+    print("В VS Code откройте меню Terminal -> New Terminal.")
+    print("В появившемся терминале выполните команду:")
+    print("python3 -m pip install colorama")
+    print("После установки запустите программу ещё раз.")
+    raise SystemExit(1)
 
 
 def show_color_constants(name, group):
@@ -46,10 +56,6 @@ def practice():
 
 
 def main():
-    print("Если Colorama ещё не установлена, выполните команду:")
-    print("python3 -m pip install colorama")
-    print("Эта команда установит библиотеку для цветного текста в терминале.\n")
-
     # None оставляет автоматический выбор convert/strip на усмотрение Colorama.
     colorama.init(autoreset=True, convert=None, strip=None, wrap=True)
     try:
