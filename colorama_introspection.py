@@ -26,8 +26,9 @@ except ModuleNotFoundError as error:
     if error.name != "colorama":
         raise
     print("Не найдена библиотека Colorama.")
-    print("Скопируй эту команду в PowerShell или системный терминал и нажми Enter:")
+    print("Чтобы скачать и установить Colorama, скопируй команду в PowerShell или системный терминал:")
     print(python_command("-m", "pip", "install", "colorama"))
+    print("Нажми Enter и дождись окончания установки.")
     print("Не вводи её в окно Python Shell. После установки снова запусти этот файл из своей программы.")
     raise SystemExit(1)
 
