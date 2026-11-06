@@ -69,7 +69,9 @@ def practice():
     print("init(autoreset=True)")
     print(f"print(Fore.GREEN + {text!r})")
     print("\nСкопируй код выше в новый файл hello.py и сохрани его (Ctrl+S).")
-    print("Код не вводи в терминал. Для запуска: VS Code — Run Python File; IDLE — F5.")
+    print("Для запуска: VS Code — Run Python File; IDLE — F5.")
+    print("В PowerShell не вводи путь отдельно. Скопируй целую команду:")
+    print(python_command(Path(__file__).with_name("hello.py").resolve()))
 
 
 def main():
