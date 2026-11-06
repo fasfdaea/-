@@ -32,15 +32,15 @@ python3 colorama_introspection.py
 - `Cursor` содержит команды для перемещения курсора.
 - `init()` включает Colorama, а `deinit()` завершает её работу и восстанавливает обычный вывод.
 
-Простой пример:
+## Как сделать так же в своей программе
+
+Создайте файл `hello.py` и вставьте в него этот код:
 
 ```python
-import colorama
-from colorama import Fore
+from colorama import Fore, init
 
-colorama.init(autoreset=True)
-print(Fore.GREEN + "Зелёный текст")
-colorama.deinit()
+init(autoreset=True)
+print(Fore.GREEN + "Hello my neighbour")
 ```
 
-Здесь сначала подключается Colorama, затем включается настройка, печатается зелёная строка, после чего работа Colorama завершается.
+Сохраните файл, откройте терминал в этой же папке и выполните `python3 hello.py`. Важно: код нужно поместить в файл `.py`, а не вводить в обычную командную строку. Во время практики программа покажет такой же пример с вашей фразой.

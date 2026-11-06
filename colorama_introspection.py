@@ -38,6 +38,11 @@ def practice():
     text = input("Ваш текст: ")
     print("Ваш результат:")
     print(Fore.GREEN + text + Style.RESET_ALL)
+    print("\nЧтобы получить такой же результат в своей программе, создай файл hello.py и вставь туда:")
+    print("from colorama import Fore, init")
+    print("init(autoreset=True)")
+    print(f"print(Fore.GREEN + {text!r})")
+    print("\nСохрани файл и запусти в терминале командой: python3 hello.py")
 
 
 def main():
