@@ -10,7 +10,10 @@ from pathlib import Path
 
 def python_command(*arguments):
     """Создаёт команду запуска для текущей системы и Python."""
-    parts = [sys.executable, *(str(argument) for argument in arguments)]
+    executable = sys.executable
+    if os.name == "nt" and executable.lower().endswith("pythonw.exe"):
+        executable = executable[:-len("pythonw.exe")] + "python.exe"
+    parts = [executable, *(str(argument) for argument in arguments)]
     if os.name == "nt":
         quoted_parts = ["'" + part.replace("'", "''") + "'" for part in parts]
         return "& " + " ".join(quoted_parts)
@@ -23,10 +26,9 @@ except ModuleNotFoundError as error:
     if error.name != "colorama":
         raise
     print("Не найдена библиотека Colorama.")
-    print("Скопируй эту команду в терминал и нажми Enter:")
+    print("Скопируй эту команду в PowerShell или системный терминал и нажми Enter:")
     print(python_command("-m", "pip", "install", "colorama"))
-    print("После установки запусти этот файл командой:")
-    print(python_command(Path(__file__).resolve()))
+    print("Не вводи её в окно Python Shell. После установки снова запусти этот файл из своей программы.")
     raise SystemExit(1)
 
 
@@ -65,10 +67,9 @@ def practice():
     print("from colorama import Fore, init")
     print("init(autoreset=True)")
     print(f"print(Fore.GREEN + {text!r})")
-    hello_path = Path(__file__).with_name("hello.py").resolve()
-    print("\nСохрани hello.py рядом с этим файлом сочетанием Ctrl+S.")
-    print("Затем скопируй и выполни в терминале всю команду, не только путь:")
-    print(python_command(hello_path))
+    print("\nСохрани этот код в новом файле hello.py.")
+    print("VS Code: нажми Ctrl+S, затем кнопку Run Python File (треугольник).")
+    print("IDLE: нажми F5 или выбери Run -> Run Module.")
 
 
 def main():
