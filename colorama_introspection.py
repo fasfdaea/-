@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Настройка Colorama и краткая интроспекция её публичного API."""
 
 import inspect
