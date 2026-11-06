@@ -2,14 +2,39 @@
 
 Небольшое исследование библиотеки [Colorama](https://pypi.org/project/colorama/): задаются параметры инициализации, демонстрируется цветной вывод и с помощью `inspect` изучаются важные атрибуты и функции.
 
-## Запуск
+## Как продолжить
+
+Откройте терминал в папке проекта. Если Colorama ещё не установлена, выполните:
 
 ```bash
 python3 -m pip install colorama
+```
+
+Затем запустите задание командой:
+
+```bash
 python3 colorama_introspection.py
 ```
 
-В примере вызывается `colorama.init(autoreset=True, convert=None, strip=None, wrap=True)`. `autoreset=True` сбрасывает стиль после каждого вывода, а `None` для `convert` и `strip` позволяет Colorama выбрать поведение с учётом среды. `wrap=True` оставляет обёртку потока вывода включённой.
+Скрипт выводит информацию по порядку: версию Colorama и примеры форматирования, затем атрибуты цветовых групп и методы `Cursor`, а в конце — сигнатуры основных функций.
+
+## Пример по шагам
+
+```python
+import colorama
+from colorama import Fore, Style
+
+colorama.init(autoreset=True)
+print(Fore.GREEN + "Зелёный текст" + Style.RESET_ALL)
+colorama.deinit()
+```
+
+1. Импортируются Colorama и нужные атрибуты.
+2. `init(autoreset=True)` включает настройку вывода и автоматический сброс стиля после текста.
+3. `Fore.GREEN` добавляет код зелёного цвета перед строкой; `Style.RESET_ALL` возвращает стандартное оформление.
+4. `deinit()` восстанавливает потоки вывода после завершения работы с Colorama.
+
+В основном скрипте `init()` вызывается с параметрами `autoreset=True, convert=None, strip=None, wrap=True`. Значения `None` позволяют Colorama автоматически выбрать обработку ANSI-кодов с учётом среды, а `wrap=True` включает обёртку потоков.
 
 ## Что важно в API
 
