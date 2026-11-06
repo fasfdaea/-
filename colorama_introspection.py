@@ -33,8 +33,8 @@ def show_function_signatures():
 def practice():
     """Просит пользователя повторить пример со своим текстом."""
     print("\nПрактика: попробуйте вывести свой текст зелёным цветом.")
-    print("Когда появится приглашение, введите только фразу, например: Hello my neighbour.")
-    print("Не вводите Fore.GREEN: программа сама добавит зелёный цвет.")
+    print("Когда появится приглашение ниже, введите: Hello my neighbour")
+    print("Введите только эти слова: без Fore.GREEN, кавычек и точки.")
     text = input("Ваш текст: ")
     print("Ваш результат:")
     print(Fore.GREEN + text + Style.RESET_ALL)
