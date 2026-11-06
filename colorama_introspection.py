@@ -30,6 +30,15 @@ def show_function_signatures():
         print(f"  {name}{inspect.signature(function)}")
 
 
+def practice():
+    """Просит пользователя повторить пример со своим текстом."""
+    print("\nПрактика: попробуйте вывести свой текст зелёным цветом.")
+    print("Подсказка: перед текстом используется Fore.GREEN.")
+    text = input("Введите короткий текст: ")
+    print("Ваш результат:")
+    print(Fore.GREEN + text + Style.RESET_ALL)
+
+
 def main():
     print("Если Colorama ещё не установлена, выполните команду:")
     print("python3 -m pip install colorama")
@@ -42,6 +51,8 @@ def main():
         print(Fore.GREEN + "Зелёный текст" + Style.RESET_ALL)
         print(Back.YELLOW + Fore.BLACK + "Текст на цветном фоне")
         print(Style.BRIGHT + "Яркий текст")
+
+        practice()
 
         show_color_constants("Fore: цвет текста", Fore)
         show_color_constants("Back: цвет фона", Back)
