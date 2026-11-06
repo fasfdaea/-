@@ -5,6 +5,16 @@ import inspect
 import os
 import shlex
 import sys
+from pathlib import Path
+
+
+def python_command(*arguments):
+    """Создаёт команду запуска для текущей системы и Python."""
+    parts = [sys.executable, *(str(argument) for argument in arguments)]
+    if os.name == "nt":
+        quoted_parts = ["'" + part.replace("'", "''") + "'" for part in parts]
+        return "& " + " ".join(quoted_parts)
+    return shlex.join(parts)
 
 try:
     import colorama
@@ -13,13 +23,10 @@ except ModuleNotFoundError as error:
     if error.name != "colorama":
         raise
     print("Не найдена библиотека Colorama.")
-    print("В терминале выполните команду установки для этого Python:")
-    if os.name == "nt":
-        quoted_python = "'" + sys.executable.replace("'", "''") + "'"
-        print(f"& {quoted_python} -m pip install colorama")
-    else:
-        print(f"{shlex.quote(sys.executable)} -m pip install colorama")
-    print("После установки запустите программу ещё раз.")
+    print("Скопируй эту команду в терминал и нажми Enter:")
+    print(python_command("-m", "pip", "install", "colorama"))
+    print("После установки запусти этот файл командой:")
+    print(python_command(Path(__file__).resolve()))
     raise SystemExit(1)
 
 
@@ -58,7 +65,10 @@ def practice():
     print("from colorama import Fore, init")
     print("init(autoreset=True)")
     print(f"print(Fore.GREEN + {text!r})")
-    print("\nСохрани файл и запусти в терминале командой: python3 hello.py")
+    hello_path = Path(__file__).with_name("hello.py").resolve()
+    print("\nСохрани hello.py рядом с этим файлом сочетанием Ctrl+S.")
+    print("Затем скопируй и выполни в терминале всю команду, не только путь:")
+    print(python_command(hello_path))
 
 
 def main():
