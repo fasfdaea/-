@@ -68,9 +68,8 @@ def practice():
     print("from colorama import Fore, init")
     print("init(autoreset=True)")
     print(f"print(Fore.GREEN + {text!r})")
-    print("\nСохрани этот код в новом файле hello.py.")
-    print("VS Code: нажми Ctrl+S, затем кнопку Run Python File (треугольник).")
-    print("IDLE: нажми F5 или выбери Run -> Run Module.")
+    print("\nСкопируй код выше в новый файл hello.py и сохрани его (Ctrl+S).")
+    print("Код не вводи в терминал. Для запуска: VS Code — Run Python File; IDLE — F5.")
 
 
 def main():
